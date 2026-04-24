@@ -3,8 +3,12 @@ import Input from "../components/Inputs";
 import Button from "../components/Button";
 
 function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const path = window.location.pathname.split("/");
+  const username = path[2] ?? "";
+  const pass = path[3] ?? "";
+
+  const [email, setEmail] = useState(username);
+  const [password, setPassword] = useState(pass);
 
   const envoyer = () => {
     alert(`email: ${email} | password: ${password}`);
@@ -13,6 +17,11 @@ function SignIn() {
   const onGoToSignUp = () => {
     const newUrl = window.location.origin + "/sign-up";
     window.location.href = newUrl;
+  };
+
+  const handleChangeEmail = (newValue) => {
+    setEmail(newValue);
+    window.location.pathname = "/sign-in/" + newValue;
   };
 
   return (
@@ -24,7 +33,7 @@ function SignIn() {
           className="mb-4"
           style={{ width: "100px" }}
         />
-        <Input label="email" value={email} onChange={setEmail} />
+        <Input label="email" value={email} onChange={handleChangeEmail} />
         <Input label="password" value={password} onChange={setPassword} />
         <Button label="Envoyer" onClick={envoyer} />
 
