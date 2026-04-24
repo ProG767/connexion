@@ -2,6 +2,23 @@ import { useState, useEffect } from "react";
 import Input from "./components/Inputs";
 import Select from "./components/Select";
 
+const JOURS = Array.from({ length: 31 }, (_, i) => i + 1);
+const MOIS_LISTE = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+];
+const ANNEES = Array.from({ length: 100 }, (_, i) => 2024 - i);
+
 function App() {
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
@@ -42,23 +59,6 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const jours = Array.from({ length: 31 }, (_, i) => i + 1);
-  const mois_liste = [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septembre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
-  ];
-  const annees = Array.from({ length: 100 }, (_, i) => 2024 - i);
-
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="w-25">
@@ -75,19 +75,19 @@ function App() {
             label="Jour"
             value={jour}
             onChange={setJour}
-            options={jours}
+            options={JOURS}
           />
           <Select
             label="Mois"
             value={mois}
             onChange={setMois}
-            options={mois_liste}
+            options={MOIS_LISTE}
           />
           <Select
             label="Année"
             value={annee}
             onChange={setAnnee}
-            options={annees}
+            options={ANNEES}
           />
         </div>
 
