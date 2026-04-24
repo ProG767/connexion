@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+
 
 function Button({ label, onClick, disabled }) {
   return (
@@ -33,14 +33,15 @@ function App() {
 
   const onInitialized = () => {
     setList(list.map((j) => ({ ...j, score: 0 })));
+    
   };
 
   const onRandom = () => {
-    const newUsers = list.map((j) => ({
+    list.map((j) => ({
       ...j,
       score: j.score + Math.floor(Math.random() * 33),
     }));
-    setList(newUsers);
+   ;
   };
 
   const sup = (id) => {
@@ -78,34 +79,6 @@ function App() {
       <Checkbox onChange={setChecked} />
       <UserC />
     </div>
-  );
-}
-
-
-function UserC() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  return <UserRow users={users} />;
-}
-
-function UserRow({ users }) {
-  return (
-    <ul>
-      {users.map((item) => (
-        <li key={item.id}>
-          {item.name} - {item.email}
-        </li>
-      ))}
-    </ul>
   );
 }
 
