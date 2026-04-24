@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Input from "./components/Inputs";
 import Select from "./components/Select";
+import Button from "./components/Button";
 
 const JOURS = Array.from({ length: 31 }, (_, i) => i + 1);
 const MOIS_LISTE = [
@@ -99,9 +100,7 @@ function App() {
           onChange={setPassword}
         />
 
-        <button className="btn btn-primary w-100 mt-2" onClick={handleSubmit}>
-          S'inscrire
-        </button>
+        <Button label="S'inscrire" onClick={handleSubmit} />
 
         <p className="text-muted mt-3" style={{ fontSize: "12px" }}>
           {users.length} utilisateurs existants chargés
