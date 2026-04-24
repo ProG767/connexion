@@ -60,6 +60,11 @@ function SignUp() {
       .catch((err) => console.log(err));
   };
 
+  const handeSignIn = () => {
+    const newUrl = window.location.origin + "/sign-in";
+    window.location.href = newUrl;
+  };
+
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="w-80">
@@ -108,6 +113,12 @@ function SignUp() {
         <p className="text-muted mt-3" style={{ fontSize: "12px" }}>
           {users.length} utilisateurs existants chargés
         </p>
+
+        <Button
+          label="J'ai déjà un compte"
+          color="secondary"
+          onClick={handeSignIn}
+        />
       </div>
     </div>
   );

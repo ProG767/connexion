@@ -1,6 +1,6 @@
-function Button({ label, onClick }) {
+function Button({ label, onClick, color = "primary" }) {
   return (
-    <button className="btn btn-primary w-100" onClick={onClick}>
+    <button className={`btn btn-${color} w-100`} onClick={onClick}>
       {label}
     </button>
   );
