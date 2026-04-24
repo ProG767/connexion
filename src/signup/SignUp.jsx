@@ -71,20 +71,23 @@ function SignUp() {
         </div>
 
         <label className="form-label">Date de naissance</label>
-        <div className="d-flex gap-2 mb-3">
+        <div className="d-flex gap-2 mb-3 w-100">
           <Select
+            className="flex-fill"
             label="Jour"
             value={jour}
             onChange={setJour}
             options={JOURS}
           />
           <Select
+            className="flex-fill"
             label="Mois"
             value={mois}
             onChange={setMois}
             options={MOIS_LISTE}
           />
           <Select
+            className="flex-fill"
             label="Année"
             value={annee}
             onChange={setAnnee}

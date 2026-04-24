@@ -1,6 +1,6 @@
-function Select({ label, value, onChange, options }) {
+function Select({ label, value, onChange, options, className }) {
   return (
-    <div>
+    <div className={className}>
       <label className="form-label">{label}</label>
       <select
         className="form-select"

@@ -3,7 +3,8 @@ import SignUp from "./signup/SignUp";
 import SignIn from "./signin/SignIn";
 
 function App() {
-  return <SignIn />;
+  // return <SignIn />;
+  return <SignUp />;
 }
 
 export default App;
