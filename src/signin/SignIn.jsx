@@ -2,7 +2,7 @@ import { useState } from "react";
 import Input from "../components/Inputs";
 import Button from "../components/Button";
 
-function App() {
+function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default SignIn;

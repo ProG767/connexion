@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import SignUp from "./signup/SignUp";
+import SignIn from "./signin/SignIn";
 
 function App() {
-  return <SignUp />;
+  return <SignIn />;
 }
 
 export default App;
