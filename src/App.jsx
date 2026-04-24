@@ -1,36 +1,6 @@
 import { useState, useEffect } from "react";
-
-function Input({ label, value, onChange, type = "text" }) {
-  return (
-    <div className="mb-3">
-      <label className="form-label">{label}</label>
-      <input
-        className="form-control"
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </div>
-  );
-}
-
-function Select({ label, value, onChange, options }) {
-  return (
-    <div>
-      <label className="form-label">{label}</label>
-      <select
-        className="form-select"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      >
-        <option value="">--</option>
-        {options.map((o) => (
-          <option key={o} value={o}>{o}</option>
-        ))}
-      </select>
-    </div>
-  );
-}
+import Input from "./components/Inputs";
+import Select from "./components/Select";
 
 function App() {
   const [prenom, setPrenom] = useState("");
@@ -61,15 +31,32 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         alert(`Créé ! ID : ${data.id}`);
-        setPrenom(""); setNom(""); setJour("");
-        setMois(""); setAnnee(""); setEmail(""); setPassword("");
+        setPrenom("");
+        setNom("");
+        setJour("");
+        setMois("");
+        setAnnee("");
+        setEmail("");
+        setPassword("");
       })
       .catch((err) => console.log(err));
   };
 
   const jours = Array.from({ length: 31 }, (_, i) => i + 1);
-  const mois_liste = ["Janvier","Février","Mars","Avril","Mai","Juin",
-                      "Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+  const mois_liste = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ];
   const annees = Array.from({ length: 100 }, (_, i) => 2024 - i);
 
   return (
@@ -84,13 +71,33 @@ function App() {
 
         <label className="form-label">Date de naissance</label>
         <div className="d-flex gap-2 mb-3">
-          <Select label="Jour" value={jour} onChange={setJour} options={jours} />
-          <Select label="Mois" value={mois} onChange={setMois} options={mois_liste} />
-          <Select label="Année" value={annee} onChange={setAnnee} options={annees} />
+          <Select
+            label="Jour"
+            value={jour}
+            onChange={setJour}
+            options={jours}
+          />
+          <Select
+            label="Mois"
+            value={mois}
+            onChange={setMois}
+            options={mois_liste}
+          />
+          <Select
+            label="Année"
+            value={annee}
+            onChange={setAnnee}
+            options={annees}
+          />
         </div>
 
         <Input label="Email" type="email" value={email} onChange={setEmail} />
-        <Input label="Password" type="password" value={password} onChange={setPassword} />
+        <Input
+          label="Password"
+          type="password"
+          value={password}
+          onChange={setPassword}
+        />
 
         <button className="btn btn-primary w-100 mt-2" onClick={handleSubmit}>
           S'inscrire
