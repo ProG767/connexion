@@ -1,22 +1,20 @@
 import { useState } from "react";
 import Input from "../components/Inputs";
 import Button from "../components/Button";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SignIn() {
-  const path = window.location.pathname.split("/");
-  const username = path[2] ?? "";
-  const pass = path[3] ?? "";
+  const { username, pwd } = useParams();
 
   const [email, setEmail] = useState(username);
-  const [password, setPassword] = useState(pass);
+  const [password, setPassword] = useState(pwd);
 
   const envoyer = () => {
     alert(`email: ${email} | password: ${password}`);
   };
 
   const onGoToSignUp = () => {
-    const newUrl = window.location.origin + "/sign-up";
-    window.location.href = newUrl;
+    navigate("/sign-up");
   };
 
   const handleChangeEmail = (newValue) => {
@@ -33,6 +31,7 @@ function SignIn() {
           className="mb-4"
           style={{ width: "100px" }}
         />
+        {username}
         <Input label="email" value={email} onChange={handleChangeEmail} />
         <Input label="password" value={password} onChange={setPassword} />
         <Button label="Envoyer" onClick={envoyer} />

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Input from "../components/Inputs";
 import Select from "../components/Select";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const JOURS = Array.from({ length: 31 }, (_, i) => i + 1);
 const MOIS_LISTE = [
@@ -21,6 +22,8 @@ const MOIS_LISTE = [
 const ANNEES = Array.from({ length: 100 }, (_, i) => 2024 - i);
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
   const [jour, setJour] = useState("");
@@ -61,8 +64,7 @@ function SignUp() {
   };
 
   const handeSignIn = () => {
-    const newUrl = window.location.origin + "/sign-in";
-    window.location.href = newUrl;
+    navigate("/sign-in");
   };
 
   return (

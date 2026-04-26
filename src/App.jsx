@@ -1,21 +1,33 @@
 import { useState, useEffect } from "react";
 import SignUp from "./signup/SignUp";
 import SignIn from "./signin/SignIn";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "./header/Header";
+import Accueil from "./accueil/Accueil";
+
+const routes = createBrowserRouter([
+  {
+    path: "/sign-up",
+    element: <SignUp />,
+  },
+  {
+    path: "/sign-in",
+    element: <SignIn />,
+  },
+  {
+    path: "",
+    element: <p>Bienvenue!</p>,
+  },
+]);
 
 function App() {
-  const pathname = window.location.pathname;
-  const isSignUp = pathname.includes("/sign-up");
-  const isSignIn = pathname.includes("/sign-in");
-
-  if (isSignUp) {
-    return <SignUp />;
-  }
-
-  if (isSignIn) {
-    return <SignIn />;
-  }
-
-  return <SignIn />;
+  return (
+    <>
+      <Header />
+      <RouterProvider router={routes} />
+      <div>Footer</div>
+    </>
+  );
 }
 
 export default App;
