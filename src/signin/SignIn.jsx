@@ -8,6 +8,7 @@ function SignIn() {
 
   const [email, setEmail] = useState(username);
   const [password, setPassword] = useState(pwd);
+  const navigate = useNavigate();
 
   const envoyer = () => {
     alert(`email: ${email} | password: ${password}`);
