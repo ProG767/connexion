@@ -1,12 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { getUserByIdApi } from "../api/server";
+import { useUser } from "../context/UserContext";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  const { isConnected, currentUser, signOut } = useUser();
 
-  const currentUser = getUserByIdApi(id);
+  const handleSignOut = () => {
+    signOut();
+    navigate("/");
+  };
 
   return (
     <header className="p-3 mb-3 border-bottom">
@@ -35,7 +39,7 @@ const Header = () => {
             ></svg>
           </a>
 
-          {currentUser && (
+          {isConnected && (
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li>
                 <a href="#" className="nav-link px-2 link-secondary">
@@ -55,7 +59,7 @@ const Header = () => {
             </ul>
           )}
 
-          {currentUser && (
+          {isConnected && (
             <div className="dropdown text-end">
               <a
                 className="d-block link-dark text-decoration-none dropdown-toggle"
@@ -85,7 +89,7 @@ const Header = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" onClick={() => navigate("/")}>
+                  <a className="dropdown-item" onClick={handleSignOut}>
                     Sign out
                   </a>
                 </li>
