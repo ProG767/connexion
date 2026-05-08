@@ -144,11 +144,11 @@ const users = [
   },
 ];
 
-export const signIn = (emailInput) => {
+export const signInApi = (emailInput) => {
   return users.find((user) => user.email === emailInput);
 };
 
-export const getUserById = (idInput) => {
+export const getUserByIdApi = (idInput) => {
   const idNumber = parseInt(idInput);
   return users.find((user) => user.id === idNumber);
 };

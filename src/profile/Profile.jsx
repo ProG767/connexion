@@ -4,12 +4,12 @@ import POSTS from "../Post";
 import Input from "../components/Inputs";
 import Button from "../components/Button";
 import Category from "./Category";
-import { getUserById } from "../api/server";
+import { getUserByIdApi } from "../api/server";
 
 export default function Profile() {
   const { id } = useParams();
 
-  const currentUser = getUserById(id);
+  const currentUser = getUserByIdApi(id);
 
   if (!currentUser) {
     return <p>Profil introuvable</p>;

@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { getUserById } from "../api/server";
+import { getUserByIdApi } from "../api/server";
 
 const Header = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
 
-  const currentUser = getUserById(id);
+  const currentUser = getUserByIdApi(id);
 
   return (
     <header className="p-3 mb-3 border-bottom">
