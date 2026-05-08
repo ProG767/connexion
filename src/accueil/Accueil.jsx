@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-
-
 export default function Accueil() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const goProfile = () => {
-    navigate("./Profile")
-}
+    navigate("./Profile");
+  };
 
   return (
     <main className="container-fluid min-vh-100 bg-white">
@@ -46,10 +44,22 @@ export default function Accueil() {
           <div className="w-100" style={{ maxWidth: "460px" }}>
             <h1 className="h4 fw-bold mb-4">Log in</h1>
 
-            <input className="form-control form-control-lg mb-3" placeholder="Email" />
-            <input className="form-control form-control-lg mb-3" placeholder="Password" type="password" />
+            <input
+              className="form-control form-control-lg mb-3"
+              placeholder="Email"
+            />
+            <input
+              className="form-control form-control-lg mb-3"
+              placeholder="Password"
+              type="password"
+            />
 
-            <Button onClick = {goProfile} className="btn btn-outline-primary btn-lg w-100 p-3 " style={{ height: "50px", fontSize: "20px", color:"white"}} label ="Connecter"/>
+            <Button
+              onClick={goProfile}
+              className="btn btn-outline-primary btn-lg w-100 p-3 "
+              style={{ height: "50px", fontSize: "20px", color: "white" }}
+              label="Connecter"
+            />
             <button className="btn btn-outline-primary btn-lg w-100">
               Create new account
             </button>

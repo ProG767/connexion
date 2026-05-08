@@ -2,17 +2,30 @@ import { useState } from "react";
 import Input from "../components/Inputs";
 import Button from "../components/Button";
 import { useNavigate, useParams } from "react-router-dom";
+import { signIn } from "../api/server";
 
 function SignIn() {
   const { username, pwd } = useParams();
 
   const [email, setEmail] = useState(username);
   const [password, setPassword] = useState(pwd);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const envoyer = () => {
-    alert(`email: ${email} | password: ${password}`);
-    navigate("/profile/"+email);
+    //alert(`email: ${email} | password: ${password}`);
+    // call backend server: fetch
+    console.log("connnect user ", email);
+    const user = signIn(email);
+
+    console.log(email, user);
+
+    if (user) {
+      setError("");
+      navigate("/profile/" + user.id);
+    } else {
+      setError("User " + email + " est introuvable!");
+    }
   };
 
   const onGoToSignUp = () => {
@@ -21,11 +34,10 @@ function SignIn() {
 
   const handleChangeEmail = (newValue) => {
     setEmail(newValue);
-   
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center align-items-center vh-50">
       <div className="w-25 text-center">
         <img
           src="src/assets/logo.png"
@@ -36,6 +48,7 @@ function SignIn() {
         {username}
         <Input label="email" value={email} onChange={handleChangeEmail} />
         <Input label="password" value={password} onChange={setPassword} />
+        {error && <div className="text-danger">{error}</div>}
         <Button label="Envoyer" onClick={envoyer} />
 
         <div className="mt-2">

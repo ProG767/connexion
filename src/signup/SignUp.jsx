@@ -68,7 +68,7 @@ function SignUp() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center align-items-center">
       <div className="w-80">
         <h4 className="mb-4 text-center">Créer un compte</h4>
 
