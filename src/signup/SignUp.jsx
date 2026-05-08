@@ -64,7 +64,7 @@ function SignUp() {
   };
 
   const handeSignIn = () => {
-    navigate("/sign-in");
+    navigate("/signin");
   };
 
   return (

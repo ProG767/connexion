@@ -1,4 +1,4 @@
-function Input({ label, value, onChange, type = "text" }) {
+function Input({ label, value, onChange, type = "text" , placeholder}) {
   return (
     <div className="mb-3">
       <label className="form-label">{label}</label>
@@ -7,6 +7,7 @@ function Input({ label, value, onChange, type = "text" }) {
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        placeholder = {placeholder}
       />
     </div>
   );

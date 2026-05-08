@@ -3,12 +3,12 @@ const Header = () => {
     <header className="p-3 mb-3 border-bottom">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a class="navbar-brand" href="#">
+          <a className="navbar-brand" href="#">
             <img
               src="/src/assets/logo.png"
               width="49"
               height="49"
-              class="d-inline-block align-top"
+              className="d-inline-block align-top"
               alt=""
             />
             FaceBook

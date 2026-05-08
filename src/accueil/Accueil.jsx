@@ -6,7 +6,7 @@ import Button from "../components/Button";
 export default function Accueil() {
   const navigate = useNavigate(); 
 
-const goProfile = () => {
+  const goProfile = () => {
     navigate("./Profile")
 }
 

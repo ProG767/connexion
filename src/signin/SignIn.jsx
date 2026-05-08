@@ -12,15 +12,16 @@ function SignIn() {
 
   const envoyer = () => {
     alert(`email: ${email} | password: ${password}`);
+    navigate("/profile/"+email);
   };
 
   const onGoToSignUp = () => {
-    navigate("/sign-up");
+    navigate("/signup");
   };
 
   const handleChangeEmail = (newValue) => {
     setEmail(newValue);
-    window.location.pathname = "/sign-in/" + newValue;
+   
   };
 
   return (
