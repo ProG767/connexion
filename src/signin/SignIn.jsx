@@ -2,9 +2,11 @@ import { useState } from "react";
 import Input from "../components/Inputs";
 import Button from "../components/Button";
 import { useNavigate, useParams } from "react-router-dom";
-import { signInApi } from "../api/server";
+import { useUser } from "../context/UserContext";
 
 function SignIn() {
+  const { signIn } = useUser();
+
   const { username, pwd } = useParams();
 
   const [email, setEmail] = useState(username);
@@ -13,12 +15,7 @@ function SignIn() {
   const navigate = useNavigate();
 
   const envoyer = () => {
-    //alert(`email: ${email} | password: ${password}`);
-    // call backend server: fetch
-    console.log("connnect user ", email);
-    const user = signInApi(email);
-
-    console.log(email, user);
+    const user = signIn(email);
 
     if (user) {
       setError("");

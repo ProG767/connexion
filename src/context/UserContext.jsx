@@ -1,20 +1,29 @@
-import { Children, createContext, useState } from "react";
+import { Children, createContext, useContext, useState } from "react";
 import { signInApi } from "../api/server";
 
 const UserContext = createContext();
 
-export const UserProvider = ({ Children }) => {
-  const [user, setUser] = useState();
+export const UserProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const sigIn = () => {
-    const currentUser = signInApi("malek.benanes@outlook.om");
+  const signIn = (email) => {
+    const userFromApi = signInApi(email);
 
-    setUser(currentUser);
+    if (userFromApi) {
+      setCurrentUser(userFromApi);
+    }
+
+    return userFromApi;
   };
 
   return (
-    <UserContext.Provider value={{ user, sigIn }}>
+    <UserContext.Provider value={{ currentUser, signIn }}>
       {children}
     </UserContext.Provider>
   );
 };
+
+// Hook personnalisé
+export function useUser() {
+  return useContext(UserContext);
+}

@@ -5,11 +5,10 @@ import Input from "../components/Inputs";
 import Button from "../components/Button";
 import Category from "./Category";
 import { getUserByIdApi } from "../api/server";
+import { useUser } from "../context/UserContext";
 
 export default function Profile() {
-  const { id } = useParams();
-
-  const currentUser = getUserByIdApi(id);
+  const { currentUser } = useUser();
 
   if (!currentUser) {
     return <p>Profil introuvable</p>;
