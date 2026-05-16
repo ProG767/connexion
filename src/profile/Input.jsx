@@ -1,8 +1,3 @@
-import { Outlet } from "react-router-dom";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
-import { useState } from "react";
-
 function Input({ label, value, onChange }) {
   return (
     <div>
@@ -17,12 +12,23 @@ function Input({ label, value, onChange }) {
 }
 
 function Button({ label, onClick }) {
-  return <button onClick={onClick}>{label}</button>;
+  return (
+    <button>
+      {" "}
+      onClick = {onClick}
+      {label}
+    </button>
+  );
 }
 
 function App() {
-  const [value, setValue] = useState("");
-  const [list, setList] = useState(["pomme", "poire", "pêche", "abricot"]);
+  const [value, setValue] = React.useState("");
+  const [list, setList] = React.useState([
+    "pomme",
+    "poire",
+    "pêche",
+    "abricot",
+  ]);
 
   const search = list.filter((s) =>
     s.toLowerCase().includes(value.toLowerCase()),
@@ -74,5 +80,5 @@ function App() {
     </div>
   );
 }
-
-export default App;
+const root = ReactDOM.createRoot(document.getElementById("react-app"));
+root.render(<App />);
