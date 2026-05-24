@@ -1,13 +1,20 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { signInApi } from "../api/server";
+import { signInApi, User } from "../api/server";
 
-const UserContext = createContext();
+const UserContext = createContext({});
+// : ReactNode | ReactNode[]
 
-export const UserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+type Props = {
+  children: React.ReactNode | React.ReactNode[];
+};
+
+export const UserProvider: React.FC<any> = ({
+  children,
+}: Props): React.ReactNode => {
+  const [currentUser, setCurrentUser] = useState<User | null>();
   const [isConnected, setIsConnected] = useState(false);
 
-  const signIn = (email) => {
+  const signIn = (email: string) => {
     const userFromApi = signInApi(email);
 
     if (userFromApi) {

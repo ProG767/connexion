@@ -1,4 +1,18 @@
-const users = [
+export interface User {
+  id: number;
+  firstName: string;
+  lastname: string;
+  profession: string;
+  age: number;
+  email: string;
+  status: string;
+  salaire: number;
+  friends: string[];
+  profilePhoto: string;
+  phone: string;
+}
+
+const users: User[] = [
   {
     id: 1234567,
     firstName: "Charafi",
@@ -8,7 +22,7 @@ const users = [
     email: "charafi.chanfi@gmail.com",
     status: "Married",
     salaire: 5500,
-    friends: [],
+    friends: ["Malek", "Saidou"],
     profilePhoto: "https://github.com/mdo.png",
     phone: "+33 6 12 34 56 01",
   },
@@ -144,11 +158,156 @@ const users = [
   },
 ];
 
-export const signInApi = (emailInput) => {
+export const signInApi = (emailInput: string): User | undefined => {
   return users.find((user) => user.email === emailInput);
 };
 
-export const getUserByIdApi = (idInput) => {
-  const idNumber = parseInt(idInput);
+export const getUserByIdApi = (idInput: string): User | undefined => {
+  const idNumber: number = parseInt(idInput);
   return users.find((user) => user.id === idNumber);
+
+  /*return findElementById(users, {
+    id: idNumber,
+    firstName: "",
+    lastname: "",
+    profession: "",
+    age: 0,
+    email: "",
+    status: "",
+    salaire: 0,
+    friends: [],
+    profilePhoto: "",
+    phone: ""
+  });*/
 };
+
+
+
+interface TypeId {
+  id: number;
+}
+
+const findElementById = <T extends TypeId>(list: T[], element: T): T | undefined => {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].id === element.id) {
+      return list[i];
+    }
+  }
+
+  return undefined;
+}
+
+
+const elementById = findElementById([
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4, firstname: "abc" }
+],
+  { id: 2 });
+
+
+
+interface Facture {
+  id: number;
+}
+
+interface Produit {
+  id: number;
+}
+
+
+const findUserById = (list: User[], user: User): User | undefined => {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].id === user.id) {
+      return list[i];
+    }
+  }
+
+  return undefined;
+}
+
+// const user = findUserById([...], {...})
+
+const findFactureById = (list: Facture[], user: Facture): Facture | undefined => {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].id === user.id) {
+      return list[i];
+    }
+  }
+
+  return undefined;
+}
+
+
+
+const findProduitById = (list: Produit[], user: Produit): Produit | undefined => {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].id === user.id) {
+      return list[i];
+    }
+  }
+
+  return undefined;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// [1, 2, 3, 7, 8, 10], 8  => 4
+// ["malek", "anne", "charafi", "jean-marie", "sebastien" ], "jean-marie" => 3
+
+// [false, false, false, false, true], true => 4
+
+// [{id...}]  p1 .... index
+
+
+const findIndex = <T>(list: T[], element: T): number | undefined => {
+  for (let i = 0; i < list.length; i++) {
+    if (element === list[i]) {
+      return i;
+    }
+  }
+
+  return undefined;
+}
+
+const numberId: number | undefined = findIndex<number>([1, 2, 3, 7, 8, 10], 4);
+
+const angeId: number | undefined = findIndex<string>(["malek", "anne", "charafi", "jean-marie", "sebastien"], "jean-marie");
+
+const trueId: number | undefined = findIndex<boolean>([false, false, false, false, true], true);
+
+interface Brand {
+  id: number;
+  name: string;
+}
+
+const brandIdx = findIndex<Brand>([
+  { id: 1324, name: "VW" },
+  { id: 254654, name: "Bmw" },
+  { id: 35646, name: "Mercedes" },
+  { id: 45756, name: "Renault" },
+  { id: 4565, name: "Peugeot" },
+], { id: 4565, name: "Peugeot" });
+
+
+
+
+
+
+const xx = findIndex<string | number>(["malek", "anne", "charafi", "jean-marie", "sebastien", 12, 55, 99, 23], 12);
