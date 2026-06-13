@@ -4,13 +4,15 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./routes";
 import { UserProvider } from "./context/UserContext";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UserProvider>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </UserProvider>
+    </Provider>
   </StrictMode>,
 );

@@ -276,6 +276,9 @@ const findProduitById = (list: Produit[], user: Produit): Produit | undefined =>
 // [{id...}]  p1 .... index
 
 
+// javascript -> chrome ->  runtime
+
+// typescript -> compiler -> javascript -> chrome ->  runtime
 const findIndex = <T>(list: T[], element: T): number | undefined => {
   for (let i = 0; i < list.length; i++) {
     if (element === list[i]) {
