@@ -24,9 +24,11 @@ const Counter = () => {
     <div>
       <h2>Compteur : {count}</h2>
 
+      <button onClick={() => dispatch(incrementBy10())}>+ 10</button>
       <button onClick={() => dispatch(increment())}>+</button>
 
       <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(decrementby10())}>-10</button>
     </div>
   );
 };
